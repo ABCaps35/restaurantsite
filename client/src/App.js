@@ -1,11 +1,13 @@
 import { React, useState, useMemo } from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom" ;
 import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
 
 //insert view imports here
+import TopNavBar from './Components/TopNavBar';
+import Home from './Views/Home';
 
 function App() {
-  const [mode, setMode] = useState("lightTheme");
+  const [mode, setMode] = useState("light");
 
   const theme = useMemo(
     () => 
@@ -20,9 +22,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline/>
+      <TopNavBar title="RESTAURANT NAME" />
       <Switch>
-        <Route exact path="/">
-          
+        <Route exact path="/home">
+          <Home/>
         </Route>
         <Route exact path="/about">
           
@@ -40,7 +43,7 @@ function App() {
           
         </Route>
       </Switch>
-      <Switch onChange={() => setMode(mode === "lightTheme" ? "darkTheme" : "lightTheme")} />
+      {/*<muiSwitch onChange={() => setMode(mode === "light" ? "dark" : "light")} />*/}
     </ThemeProvider>
   );
 }
