@@ -71,11 +71,11 @@ const TopNavBar = (props) => {
                         </Menu>
                     </Box>
                     <Link
-                        href="/home"
+                        onClick={(e) => clickHandler("/home")}
                         color="inherit"
-                        variant="h6"
                         noWrap 
-                        component="a" 
+                        variant="h6" 
+                        component="div" 
                         sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'}, textDecoration: 'none' }}
                     >
                         {title}
