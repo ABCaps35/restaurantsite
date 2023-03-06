@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useHistory, NavLink } from 'react-router-dom';
-import { AppBar, Container, Link, Typography, Box, IconButton, Toolbar, Menu, MenuItem, Button } from '@mui/material';
+import { useHistory } from 'react-router-dom';
+import { AppBar, Container, Link, Typography, Box, IconButton, Toolbar, Menu, MenuItem, Button, Switch } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 
 const pages = [
@@ -12,7 +12,7 @@ const pages = [
 ]
 
 const TopNavBar = (props) => {
-    const { title } = props;
+    const { title, mode, toggle } = props;
     const history = useHistory();
     const [anchorElNav, setAnchorElNav] = useState(null);
 
@@ -33,11 +33,11 @@ const TopNavBar = (props) => {
             <Container maxWidth="xl" sx={{p: 1}}>
                 <Toolbar disableGutters >
                     <Typography
-                        href="/"
+                        onClick={(e) => clickHandler("/home")}
                         color="inherit"
                         noWrap 
                         variant="h5" 
-                        component="a" 
+                        component="div" 
                         sx={{mr: 2, display: {xs: 'none', md: 'flex'}, textDecoration: 'none'}}
                     >
                         {title}
@@ -71,13 +71,12 @@ const TopNavBar = (props) => {
                         </Menu>
                     </Box>
                     <Link
-                        href="/"
+                        href="/home"
                         color="inherit"
-                        underline="hover" 
                         variant="h6"
                         noWrap 
-                        component="div" 
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}
+                        component="a" 
+                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'}, textDecoration: 'none' }}
                     >
                         {title}
                     </Link>
@@ -88,8 +87,8 @@ const TopNavBar = (props) => {
                         </Button>
                         ))}
                     </Box>
+                    <Switch onChange={() => toggle(!mode)} />
                 </Toolbar>
-                
             </Container>
         </AppBar>
     )

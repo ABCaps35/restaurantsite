@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 
-const Home = (props) => { 
+const Contact = (props) => { 
     return(
         <div >
             <Typography
@@ -11,10 +11,10 @@ const Home = (props) => {
                 component="div" 
                 sx={{mt: 3, textAlign: 'center'}}
             >
-                Home
+                Contact
             </Typography>
         </div>
     )
 }
 
-export default Home;
+export default Contact;
