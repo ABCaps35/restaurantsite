@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { AppBar, Container, Typography, Box, IconButton, Toolbar, Menu, MenuItem, Button } from '@mui/material';
+import { useHistory, NavLink } from 'react-router-dom';
+import { AppBar, Container, Link, Typography, Box, IconButton, Toolbar, Menu, MenuItem, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 
 const pages = [
-    {name: 'Home', link: '/', title: 'Home', show: true},
     {name: 'About', link: '/about', title: 'About', show: true},
     {name: 'Menu', link: '/menu', title: 'Menu', show: true},
     {name: 'Hours', link: '/hours', title: 'Hours', show: true},
@@ -33,11 +32,13 @@ const TopNavBar = (props) => {
         <AppBar position="static">
             <Container maxWidth="xl" sx={{p: 1}}>
                 <Toolbar disableGutters >
-                    <Typography 
+                    <Typography
+                        href="/"
+                        color="inherit"
                         noWrap 
                         variant="h5" 
-                        component="div" 
-                        sx={{mr: 2, display: {xs: 'none', md: 'flex'}}}
+                        component="a" 
+                        sx={{mr: 2, display: {xs: 'none', md: 'flex'}, textDecoration: 'none'}}
                     >
                         {title}
                     </Typography>
@@ -61,7 +62,7 @@ const TopNavBar = (props) => {
                             onClose={handleCloseNavMenu}
                             sx={{display: { xs: 'block', md: 'none' }}}
                         >
-                            {pages.filter((page)=>(page.show===true && page.link!==history.location.pathname))
+                            {pages.filter((page)=>(page.show===true))
                             .map((page,i) => (
                                 <MenuItem key={i} onClick={(e) => clickHandler(page.link)}>
                                     <Typography textAlign="center">{page.name}</Typography>
@@ -69,11 +70,19 @@ const TopNavBar = (props) => {
                             ))}
                         </Menu>
                     </Box>
-                    <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}>
+                    <Link
+                        href="/"
+                        color="inherit"
+                        underline="hover" 
+                        variant="h6"
+                        noWrap 
+                        component="div" 
+                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}
+                    >
                         {title}
-                    </Typography>
+                    </Link>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.filter((page)=>(page.show===true && page.link!==history.location.pathname)).map((page,i) => (
+                        {pages.filter((page)=>(page.show===true)).map((page,i) => (
                         <Button key={i} onClick={(e) => clickHandler(page.link)} sx={{ my: 2, color: 'white', display: 'block' }}>
                             {page.name}
                         </Button>
