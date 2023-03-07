@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { AppBar, Container, Link, Typography, Box, IconButton, Toolbar, Menu, MenuItem, Button, Switch } from '@mui/material';
+import { AppBar, Container, Link, Typography, Box, IconButton, Toolbar, Menu, MenuItem, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 
 const pages = [
@@ -12,7 +12,7 @@ const pages = [
 ]
 
 const TopNavBar = (props) => {
-    const { title, mode, toggle } = props;
+    const { title } = props;
     const history = useHistory();
     const [anchorElNav, setAnchorElNav] = useState(null);
 
@@ -87,7 +87,6 @@ const TopNavBar = (props) => {
                         </Button>
                         ))}
                     </Box>
-                    <Switch onChange={() => toggle(!mode)} />
                 </Toolbar>
             </Container>
         </AppBar>

@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
 
 //insert view imports here
 import TopNavBar from './Components/TopNavBar';
+import BottomBar from './Components/BottomBar';
 import Home from './Views/Home';
 import About from './Views/About';
 import Menu from './Views/Menu';
@@ -27,7 +28,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline/>
-      <TopNavBar title="RESTAURANT NAME" mode={mode} toggle={setMode}/>
+      <TopNavBar title="Steve's Restaurant"/>
       <Switch>
         <Route exact path="/home">
           <Home/>
@@ -48,6 +49,7 @@ function App() {
           <Contact/>
         </Route>
       </Switch>
+      <BottomBar mode={mode} toggle={setMode}/>
     </ThemeProvider>
   );
 }
