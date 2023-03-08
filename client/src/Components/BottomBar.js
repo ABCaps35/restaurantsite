@@ -10,14 +10,18 @@ const pages = [
     {name: 'Contact', link: '/contact', title: 'Contact', show: true},
 ]
 
-const TopNavBar = (props) => {
+const init = (window.visualViewport.width < window.innerWidth ? 'static' : 'fixed');
+
+const BottomBar = (props) => {
     const { mode, toggle } = props;
-    const [ pos, setPos ] = useState('static');
+    const [ pos, setPos ] = useState(init);
     const history = useHistory();
 
     useEffect(() => {
         function handleResize() {
-            setPos(window.visualViewport.width < window.innerWidth ? 'static' : 'fixed');
+            // let height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+            let height = document.documentElement.clientHeight;
+            setPos(height > window.innerHeight ? 'static' : 'fixed');
         }
         window.addEventListener('resize', handleResize)
     })
@@ -46,4 +50,4 @@ const TopNavBar = (props) => {
     )
 }
 
-export default TopNavBar;
+export default BottomBar;
